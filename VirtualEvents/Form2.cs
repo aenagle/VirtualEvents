@@ -23,6 +23,7 @@
                 db.Events.Add(newEvent);
                 db.SaveChanges();
                 Close();
+                MessageBox.Show("Событие сохранено!");
             }
         }
 

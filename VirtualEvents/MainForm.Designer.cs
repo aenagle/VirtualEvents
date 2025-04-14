@@ -1,6 +1,6 @@
 ﻿namespace VirtualEvents
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -44,6 +44,7 @@
             maskedTextBox2 = new MaskedTextBox();
             list_Of_Events = new ListBox();
             listEvents = new Label();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             create_btn.BackColor = Color.FromArgb(224, 193, 69);
             create_btn.FlatStyle = FlatStyle.Popup;
             create_btn.ForeColor = SystemColors.ButtonHighlight;
-            create_btn.Location = new Point(66, 491);
+            create_btn.Location = new Point(68, 491);
             create_btn.Margin = new Padding(3, 4, 3, 4);
             create_btn.Name = "create_btn";
             create_btn.Size = new Size(92, 39);
@@ -121,18 +122,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(504, 420);
             panel1.TabIndex = 5;
+            panel1.Visible = false;
             // 
             // participants_Of_Event
             // 
             participants_Of_Event.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             participants_Of_Event.BackColor = SystemColors.Control;
             participants_Of_Event.BorderStyle = BorderStyle.None;
-            participants_Of_Event.Location = new Point(173, 358);
+            participants_Of_Event.Location = new Point(164, 332);
             participants_Of_Event.Margin = new Padding(3, 4, 3, 4);
             participants_Of_Event.Multiline = true;
             participants_Of_Event.Name = "participants_Of_Event";
             participants_Of_Event.ScrollBars = ScrollBars.Vertical;
-            participants_Of_Event.Size = new Size(272, 28);
+            participants_Of_Event.Size = new Size(281, 28);
             participants_Of_Event.TabIndex = 11;
             // 
             // paticipanrs_lbl
@@ -140,7 +142,7 @@
             paticipanrs_lbl.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             paticipanrs_lbl.AutoSize = true;
             paticipanrs_lbl.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            paticipanrs_lbl.Location = new Point(18, 358);
+            paticipanrs_lbl.Location = new Point(18, 332);
             paticipanrs_lbl.Name = "paticipanrs_lbl";
             paticipanrs_lbl.Size = new Size(103, 20);
             paticipanrs_lbl.TabIndex = 10;
@@ -149,22 +151,22 @@
             // description_Of_Event
             // 
             description_Of_Event.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            description_Of_Event.BackColor = SystemColors.Control;
             description_Of_Event.BorderStyle = BorderStyle.None;
-            description_Of_Event.Location = new Point(173, 135);
+            description_Of_Event.Location = new Point(164, 196);
             description_Of_Event.Margin = new Padding(3, 4, 3, 4);
             description_Of_Event.Multiline = true;
             description_Of_Event.Name = "description_Of_Event";
-            description_Of_Event.ReadOnly = true;
             description_Of_Event.RightToLeft = RightToLeft.No;
             description_Of_Event.ScrollBars = ScrollBars.Vertical;
-            description_Of_Event.Size = new Size(272, 188);
+            description_Of_Event.Size = new Size(281, 69);
             description_Of_Event.TabIndex = 7;
             // 
             // description_lbl
             // 
             description_lbl.AutoSize = true;
             description_lbl.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            description_lbl.Location = new Point(18, 135);
+            description_lbl.Location = new Point(18, 196);
             description_lbl.Name = "description_lbl";
             description_lbl.Size = new Size(96, 20);
             description_lbl.TabIndex = 6;
@@ -175,7 +177,7 @@
             category_lbl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             category_lbl.AutoSize = true;
             category_lbl.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            category_lbl.Location = new Point(18, 34);
+            category_lbl.Location = new Point(18, 55);
             category_lbl.Name = "category_lbl";
             category_lbl.Size = new Size(103, 20);
             category_lbl.TabIndex = 5;
@@ -186,17 +188,18 @@
             category_Of_Event.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             category_Of_Event.BackColor = SystemColors.Control;
             category_Of_Event.BorderStyle = BorderStyle.None;
-            category_Of_Event.Location = new Point(173, 40);
+            category_Of_Event.Location = new Point(164, 55);
             category_Of_Event.Margin = new Padding(3, 4, 3, 4);
             category_Of_Event.Name = "category_Of_Event";
-            category_Of_Event.Size = new Size(272, 20);
+            category_Of_Event.ScrollBars = ScrollBars.Vertical;
+            category_Of_Event.Size = new Size(281, 20);
             category_Of_Event.TabIndex = 4;
             // 
             // dateTime_lbl
             // 
             dateTime_lbl.AutoSize = true;
             dateTime_lbl.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            dateTime_lbl.Location = new Point(18, 81);
+            dateTime_lbl.Location = new Point(18, 125);
             dateTime_lbl.Name = "dateTime_lbl";
             dateTime_lbl.Size = new Size(129, 20);
             dateTime_lbl.TabIndex = 3;
@@ -206,12 +209,12 @@
             // 
             maskedTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             maskedTextBox2.BorderStyle = BorderStyle.None;
-            maskedTextBox2.Location = new Point(173, 88);
+            maskedTextBox2.Location = new Point(164, 125);
             maskedTextBox2.Margin = new Padding(3, 4, 3, 4);
             maskedTextBox2.Mask = "00/00/0000                                                          00:00:00";
             maskedTextBox2.Name = "maskedTextBox2";
             maskedTextBox2.ReadOnly = true;
-            maskedTextBox2.Size = new Size(272, 20);
+            maskedTextBox2.Size = new Size(281, 20);
             maskedTextBox2.TabIndex = 2;
             // 
             // list_Of_Events
@@ -224,6 +227,7 @@
             list_Of_Events.Name = "list_Of_Events";
             list_Of_Events.Size = new Size(241, 420);
             list_Of_Events.TabIndex = 6;
+            list_Of_Events.SelectedIndexChanged += list_Of_Events_SelectedIndexChanged;
             // 
             // listEvents
             // 
@@ -250,7 +254,7 @@
             Controls.Add(create_btn);
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
-            Text = "Form1";
+            Text = " ";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -275,5 +279,6 @@
         private System.Windows.Forms.Label paticipanrs_lbl;
         private ListBox list_Of_Events;
         private Label listEvents;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

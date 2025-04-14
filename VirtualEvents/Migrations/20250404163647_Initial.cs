@@ -20,7 +20,7 @@ namespace VirtualEvents.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Title = table.Column<string>(type: "text", nullable: false),
                     Description = table.Column<string>(type: "text", nullable: false),
-                    Date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Date = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
                     Time = table.Column<TimeSpan>(type: "interval", nullable: false),
                     Category = table.Column<string>(type: "text", nullable: false),
                     Participants = table.Column<string>(type: "text", nullable: false)
