@@ -15,8 +15,8 @@
                 {
                     Title = title.Text,
                     Description = description.Text,
-                    //Date = date.Value.Date,
-                    //Time = time.Value.TimeOfDay,
+                    //Date = dateTimePicker.Value,
+                    //Time
                     Category = category.Text,
                     Participants = participants.Text
                 };
@@ -27,9 +27,6 @@
             }
         }
 
-        private void cancel_btn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void cancel_btn_Click(object sender, EventArgs e) => Close();
     }
 }

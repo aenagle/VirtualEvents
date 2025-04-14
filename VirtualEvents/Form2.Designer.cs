@@ -35,13 +35,13 @@
             label3 = new Label();
             time = new MaskedTextBox();
             label4 = new Label();
-            date = new MaskedTextBox();
             label5 = new Label();
             description = new TextBox();
             label6 = new Label();
             participants = new TextBox();
             save_button = new Button();
             cancel_btn = new Button();
+            dateTimePicker = new DateTimePicker();
             SuspendLayout();
             // 
             // title_lbl
@@ -111,16 +111,6 @@
             label4.Size = new Size(57, 22);
             label4.TabIndex = 7;
             label4.Text = "Дата:";
-            // 
-            // date
-            // 
-            date.Location = new Point(170, 158);
-            date.Margin = new Padding(3, 4, 3, 4);
-            date.Mask = "00/00/0000";
-            date.Name = "date";
-            date.Size = new Size(355, 27);
-            date.TabIndex = 8;
-            date.ValidatingType = typeof(DateTime);
             // 
             // label5
             // 
@@ -194,19 +184,26 @@
             cancel_btn.UseVisualStyleBackColor = false;
             cancel_btn.Click += cancel_btn_Click;
             // 
+            // dateTimePicker
+            // 
+            dateTimePicker.Location = new Point(170, 155);
+            dateTimePicker.Name = "dateTimePicker";
+            dateTimePicker.Size = new Size(355, 27);
+            dateTimePicker.TabIndex = 15;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 217, 217);
             ClientSize = new Size(817, 544);
+            Controls.Add(dateTimePicker);
             Controls.Add(cancel_btn);
             Controls.Add(save_button);
             Controls.Add(participants);
             Controls.Add(label6);
             Controls.Add(description);
             Controls.Add(label5);
-            Controls.Add(date);
             Controls.Add(label4);
             Controls.Add(time);
             Controls.Add(label3);
@@ -229,12 +226,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox time;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.MaskedTextBox date;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox description;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox participants;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button cancel_btn;
+        private DateTimePicker dateTimePicker;
     }
 }

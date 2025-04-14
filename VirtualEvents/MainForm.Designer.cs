@@ -45,6 +45,7 @@
             list_Of_Events = new ListBox();
             listEvents = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            panel = new Panel();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -240,7 +241,15 @@
             listEvents.TabIndex = 7;
             listEvents.Text = "Список событий";
             // 
-            // Form1
+            // panel
+            // 
+            panel.BackColor = Color.FromArgb(217, 217, 217);
+            panel.Location = new Point(-2, -3);
+            panel.Name = "panel";
+            panel.Size = new Size(241, 63);
+            panel.TabIndex = 8;
+            // 
+            // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -252,8 +261,9 @@
             Controls.Add(title_Of_Event);
             Controls.Add(change_btn);
             Controls.Add(create_btn);
+            Controls.Add(panel);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form1";
+            Name = "MainForm";
             Text = " ";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -280,5 +290,6 @@
         private ListBox list_Of_Events;
         private Label listEvents;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Panel panel;
     }
 }
