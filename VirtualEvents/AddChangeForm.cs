@@ -1,8 +1,8 @@
 ﻿namespace VirtualEvents
 {
-    public partial class Form2 : Form
+    public partial class AddChangeForm : Form
     {
-        public Form2()
+        public AddChangeForm()
         {
             InitializeComponent();
         }
@@ -27,6 +27,23 @@
             }
         }
 
-        private void cancel_btn_Click(object sender, EventArgs e) => Close();
+        private void cancel_btn_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void title_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(title.Text))
+            {
+                title.BackColor = Color.LightCoral; // Красный цвет для обязательного поля
+                e.Cancel = true; // Отменяем событие
+            }
+            else
+            {
+                title.BackColor = Color.White; // Сбрасываем цвет
+            }
+        }
     }
 }

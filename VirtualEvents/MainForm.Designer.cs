@@ -33,7 +33,7 @@
             delete_btn = new Button();
             fontDialog1 = new FontDialog();
             title_Of_Event = new TextBox();
-            panel1 = new Panel();
+            mainPanel = new Panel();
             participants_Of_Event = new TextBox();
             paticipanrs_lbl = new Label();
             description_Of_Event = new TextBox();
@@ -46,7 +46,7 @@
             listEvents = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel = new Panel();
-            panel1.SuspendLayout();
+            mainPanel.SuspendLayout();
             SuspendLayout();
             // 
             // create_btn
@@ -100,30 +100,32 @@
             title_Of_Event.BorderStyle = BorderStyle.None;
             title_Of_Event.Font = new Font("Palatino Linotype", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             title_Of_Event.ForeColor = Color.FromArgb(224, 193, 69);
-            title_Of_Event.Location = new Point(393, 6);
+            title_Of_Event.Location = new Point(267, 6);
             title_Of_Event.Margin = new Padding(3, 4, 3, 4);
             title_Of_Event.Name = "title_Of_Event";
-            title_Of_Event.Size = new Size(296, 37);
+            title_Of_Event.ReadOnly = true;
+            title_Of_Event.Size = new Size(504, 37);
             title_Of_Event.TabIndex = 4;
+            title_Of_Event.TextAlign = HorizontalAlignment.Center;
             // 
-            // panel1
+            // mainPanel
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.BackColor = Color.FromArgb(217, 217, 217);
-            panel1.Controls.Add(participants_Of_Event);
-            panel1.Controls.Add(paticipanrs_lbl);
-            panel1.Controls.Add(description_Of_Event);
-            panel1.Controls.Add(description_lbl);
-            panel1.Controls.Add(category_lbl);
-            panel1.Controls.Add(category_Of_Event);
-            panel1.Controls.Add(dateTime_lbl);
-            panel1.Controls.Add(maskedTextBox2);
-            panel1.Location = new Point(267, 58);
-            panel1.Margin = new Padding(3, 4, 3, 4);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(504, 420);
-            panel1.TabIndex = 5;
-            panel1.Visible = false;
+            mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            mainPanel.BackColor = Color.FromArgb(217, 217, 217);
+            mainPanel.Controls.Add(participants_Of_Event);
+            mainPanel.Controls.Add(paticipanrs_lbl);
+            mainPanel.Controls.Add(description_Of_Event);
+            mainPanel.Controls.Add(description_lbl);
+            mainPanel.Controls.Add(category_lbl);
+            mainPanel.Controls.Add(category_Of_Event);
+            mainPanel.Controls.Add(dateTime_lbl);
+            mainPanel.Controls.Add(maskedTextBox2);
+            mainPanel.Location = new Point(267, 58);
+            mainPanel.Margin = new Padding(3, 4, 3, 4);
+            mainPanel.Name = "mainPanel";
+            mainPanel.Size = new Size(504, 420);
+            mainPanel.TabIndex = 5;
+            mainPanel.Visible = false;
             // 
             // participants_Of_Event
             // 
@@ -134,6 +136,7 @@
             participants_Of_Event.Margin = new Padding(3, 4, 3, 4);
             participants_Of_Event.Multiline = true;
             participants_Of_Event.Name = "participants_Of_Event";
+            participants_Of_Event.ReadOnly = true;
             participants_Of_Event.ScrollBars = ScrollBars.Vertical;
             participants_Of_Event.Size = new Size(281, 28);
             participants_Of_Event.TabIndex = 11;
@@ -158,6 +161,7 @@
             description_Of_Event.Margin = new Padding(3, 4, 3, 4);
             description_Of_Event.Multiline = true;
             description_Of_Event.Name = "description_Of_Event";
+            description_Of_Event.ReadOnly = true;
             description_Of_Event.RightToLeft = RightToLeft.No;
             description_Of_Event.ScrollBars = ScrollBars.Vertical;
             description_Of_Event.Size = new Size(281, 69);
@@ -192,6 +196,7 @@
             category_Of_Event.Location = new Point(164, 55);
             category_Of_Event.Margin = new Padding(3, 4, 3, 4);
             category_Of_Event.Name = "category_Of_Event";
+            category_Of_Event.ReadOnly = true;
             category_Of_Event.ScrollBars = ScrollBars.Vertical;
             category_Of_Event.Size = new Size(281, 20);
             category_Of_Event.TabIndex = 4;
@@ -256,7 +261,7 @@
             ClientSize = new Size(793, 559);
             Controls.Add(listEvents);
             Controls.Add(list_Of_Events);
-            Controls.Add(panel1);
+            Controls.Add(mainPanel);
             Controls.Add(delete_btn);
             Controls.Add(title_Of_Event);
             Controls.Add(change_btn);
@@ -265,8 +270,8 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = " ";
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            mainPanel.ResumeLayout(false);
+            mainPanel.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -278,7 +283,7 @@
         private System.Windows.Forms.Button delete_btn;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.TextBox title_Of_Event;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label dateTime_lbl;
         private System.Windows.Forms.TextBox category_Of_Event;

@@ -26,7 +26,7 @@ namespace VirtualEvents
         }
         private void create_btn_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            AddChangeForm form2 = new AddChangeForm();
             form2.ShowDialog();
             LoadEvents();
         }
@@ -45,7 +45,7 @@ namespace VirtualEvents
                     //time
                     category_Of_Event.Text = selectedEvent.Category;
                     participants_Of_Event.Text = selectedEvent.Participants;
-                    panel1.Visible = true;
+                    mainPanel.Visible = true;
                 }
                 else
                 {
@@ -55,11 +55,9 @@ namespace VirtualEvents
         }
         private void delete_btn_Click(object sender, EventArgs e)
         {
-
-            if (list_Of_Events.SelectedIndex != null)
+            if (list_Of_Events.SelectedIndex != null && list_Of_Events.SelectedIndex != -1)
             {
                 string selectedTitle = list_Of_Events.SelectedItem.ToString();
-
                 using (var db = new EventContext())
                 {
                     // Находим событие по названию
@@ -76,7 +74,7 @@ namespace VirtualEvents
                         description_Of_Event.Clear();
                         category_Of_Event.Clear();
                         participants_Of_Event.Clear();
-                        panel1.Visible = false;
+                        mainPanel.Visible = false;
                         MessageBox.Show("Событие удалено!");
                     }
                 }

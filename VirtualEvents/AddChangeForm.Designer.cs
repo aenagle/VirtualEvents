@@ -1,6 +1,6 @@
 ﻿namespace VirtualEvents
 {
-    partial class Form2
+    partial class AddChangeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -62,6 +62,7 @@
             title.Name = "title";
             title.Size = new Size(355, 20);
             title.TabIndex = 1;
+            title.Validating += title_Validating;
             // 
             // category_lbl
             // 
