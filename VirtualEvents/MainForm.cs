@@ -55,7 +55,7 @@ namespace VirtualEvents
         }
         private void delete_btn_Click(object sender, EventArgs e)
         {
-            if (list_Of_Events.SelectedIndex != null && list_Of_Events.SelectedIndex != -1)
+            if (list_Of_Events.SelectedIndex != -1)
             {
                 string selectedTitle = list_Of_Events.SelectedItem.ToString();
                 using (var db = new EventContext())

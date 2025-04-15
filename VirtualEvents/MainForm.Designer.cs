@@ -217,11 +217,12 @@
             maskedTextBox2.BorderStyle = BorderStyle.None;
             maskedTextBox2.Location = new Point(164, 125);
             maskedTextBox2.Margin = new Padding(3, 4, 3, 4);
-            maskedTextBox2.Mask = "00/00/0000                                                          00:00:00";
+            maskedTextBox2.Mask = "00/00/0000 90:00";
             maskedTextBox2.Name = "maskedTextBox2";
             maskedTextBox2.ReadOnly = true;
             maskedTextBox2.Size = new Size(281, 20);
             maskedTextBox2.TabIndex = 2;
+            maskedTextBox2.ValidatingType = typeof(DateTime);
             // 
             // list_Of_Events
             // 

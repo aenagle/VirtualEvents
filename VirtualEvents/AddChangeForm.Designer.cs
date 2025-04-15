@@ -62,7 +62,6 @@
             title.Name = "title";
             title.Size = new Size(355, 20);
             title.TabIndex = 1;
-            title.Validating += title_Validating;
             // 
             // category_lbl
             // 
@@ -192,7 +191,7 @@
             dateTimePicker.Size = new Size(355, 27);
             dateTimePicker.TabIndex = 15;
             // 
-            // Form2
+            // AddChangeForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -213,8 +212,7 @@
             Controls.Add(title);
             Controls.Add(title_lbl);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "Form2";
-            Text = "Form2";
+            Name = "AddChangeForm";
             ResumeLayout(false);
             PerformLayout();
         }

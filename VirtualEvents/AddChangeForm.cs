@@ -31,19 +31,5 @@
         {
             Close();
         }
-
-        private void title_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-            if (string.IsNullOrWhiteSpace(title.Text))
-            {
-                title.BackColor = Color.LightCoral; // Красный цвет для обязательного поля
-                e.Cancel = true; // Отменяем событие
-            }
-            else
-            {
-                title.BackColor = Color.White; // Сбрасываем цвет
-            }
-        }
     }
 }
