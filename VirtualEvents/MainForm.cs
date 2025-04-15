@@ -19,9 +19,9 @@ namespace VirtualEvents
             list_Of_Events.Items.Clear();
             var events = db.Events.ToList();
             foreach (Event ev in events)
-            { // events - список всех событий
+            { 
                 eventDictionary[ev.Title] = ev;
-                list_Of_Events.Items.Add(ev.Title); // Добавляем только название в list_Of_Events
+                list_Of_Events.Items.Add(ev.Title); // добавляет только название в list_Of_Events
             }
         }
         private void create_btn_Click(object sender, EventArgs e)
@@ -47,10 +47,6 @@ namespace VirtualEvents
                     participants_Of_Event.Text = selectedEvent.Participants;
                     mainPanel.Visible = true;
                 }
-                else
-                {
-                    MessageBox.Show("ОШИБКА");
-                }
             }
         }
         private void delete_btn_Click(object sender, EventArgs e)
@@ -60,16 +56,15 @@ namespace VirtualEvents
                 string selectedTitle = list_Of_Events.SelectedItem.ToString();
                 using (var db = new EventContext())
                 {
-                    // Находим событие по названию
+                    // находим событие по названию
                     var itemToDelete = db.Events.FirstOrDefault(e => e.Title == selectedTitle);
                     if (itemToDelete != null)
                     {
-                        // Удаляем событие из базы данных
                         db.Events.Remove(itemToDelete);
                         db.SaveChanges();
 
-                        // Удаляем элемент из ListBox
                         list_Of_Events.Items.RemoveAt(list_Of_Events.SelectedIndex);
+
                         title_Of_Event.Clear();
                         description_Of_Event.Clear();
                         category_Of_Event.Clear();

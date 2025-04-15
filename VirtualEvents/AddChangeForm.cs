@@ -26,10 +26,6 @@
                 MessageBox.Show("Событие сохранено!");
             }
         }
-
-        private void cancel_btn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void cancel_btn_Click(object sender, EventArgs e) => Close();
     }
 }
