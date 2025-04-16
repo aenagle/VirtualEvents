@@ -31,9 +31,7 @@
             title_lbl = new Label();
             title = new TextBox();
             category_lbl = new Label();
-            category = new TextBox();
             label3 = new Label();
-            time = new MaskedTextBox();
             label4 = new Label();
             label5 = new Label();
             description = new TextBox();
@@ -41,7 +39,9 @@
             participants = new TextBox();
             save_button = new Button();
             cancel_btn = new Button();
-            dateTimePicker = new DateTimePicker();
+            datePicker = new DateTimePicker();
+            comboBoxCategory_AddForm = new ComboBox();
+            timePicker = new DateTimePicker();
             SuspendLayout();
             // 
             // title_lbl
@@ -62,6 +62,7 @@
             title.Name = "title";
             title.Size = new Size(355, 20);
             title.TabIndex = 1;
+            title.Validating += title_Validating;
             // 
             // category_lbl
             // 
@@ -73,15 +74,6 @@
             category_lbl.TabIndex = 2;
             category_lbl.Text = "Категория:";
             // 
-            // category
-            // 
-            category.BorderStyle = BorderStyle.None;
-            category.Location = new Point(170, 76);
-            category.Margin = new Padding(3, 4, 3, 4);
-            category.Name = "category";
-            category.Size = new Size(355, 20);
-            category.TabIndex = 3;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -91,16 +83,6 @@
             label3.Size = new Size(70, 22);
             label3.TabIndex = 4;
             label3.Text = "Время:";
-            // 
-            // time
-            // 
-            time.Location = new Point(170, 115);
-            time.Margin = new Padding(3, 4, 3, 4);
-            time.Mask = "90:00:00";
-            time.Name = "time";
-            time.Size = new Size(355, 27);
-            time.TabIndex = 6;
-            time.ValidatingType = typeof(DateTime);
             // 
             // label4
             // 
@@ -184,12 +166,31 @@
             cancel_btn.UseVisualStyleBackColor = false;
             cancel_btn.Click += cancel_btn_Click;
             // 
-            // dateTimePicker
+            // datePicker
             // 
-            dateTimePicker.Location = new Point(170, 155);
-            dateTimePicker.Name = "dateTimePicker";
-            dateTimePicker.Size = new Size(355, 27);
-            dateTimePicker.TabIndex = 15;
+            datePicker.Location = new Point(170, 155);
+            datePicker.Name = "datePicker";
+            datePicker.Size = new Size(355, 27);
+            datePicker.TabIndex = 15;
+            // 
+            // comboBoxCategory_AddForm
+            // 
+            comboBoxCategory_AddForm.FormattingEnabled = true;
+            comboBoxCategory_AddForm.Items.AddRange(new object[] { "День рождения", "Косплей-вечеринка", "Маскарад", "Вечеринка для детей", "Выпускной" });
+            comboBoxCategory_AddForm.Location = new Point(169, 69);
+            comboBoxCategory_AddForm.Name = "comboBoxCategory_AddForm";
+            comboBoxCategory_AddForm.Size = new Size(356, 28);
+            comboBoxCategory_AddForm.TabIndex = 17;
+            // 
+            // timePicker
+            // 
+            timePicker.CalendarFont = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            timePicker.Format = DateTimePickerFormat.Time;
+            timePicker.Location = new Point(170, 112);
+            timePicker.Name = "timePicker";
+            timePicker.ShowUpDown = true;
+            timePicker.Size = new Size(355, 27);
+            timePicker.TabIndex = 16;
             // 
             // AddChangeForm
             // 
@@ -197,7 +198,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(217, 217, 217);
             ClientSize = new Size(817, 544);
-            Controls.Add(dateTimePicker);
+            Controls.Add(comboBoxCategory_AddForm);
+            Controls.Add(timePicker);
+            Controls.Add(datePicker);
             Controls.Add(cancel_btn);
             Controls.Add(save_button);
             Controls.Add(participants);
@@ -205,9 +208,7 @@
             Controls.Add(description);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(time);
             Controls.Add(label3);
-            Controls.Add(category);
             Controls.Add(category_lbl);
             Controls.Add(title);
             Controls.Add(title_lbl);
@@ -221,9 +222,7 @@
         private System.Windows.Forms.Label title_lbl;
         private System.Windows.Forms.TextBox title;
         private System.Windows.Forms.Label category_lbl;
-        private System.Windows.Forms.TextBox category;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox time;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox description;
@@ -231,6 +230,9 @@
         private System.Windows.Forms.TextBox participants;
         private System.Windows.Forms.Button save_button;
         private System.Windows.Forms.Button cancel_btn;
-        private DateTimePicker dateTimePicker;
+        private DateTimePicker datePicker;
+        private DateTimePicker dateTimePicker1;
+        private ComboBox comboBoxCategory_AddForm;
+        private DateTimePicker timePicker;
     }
 }

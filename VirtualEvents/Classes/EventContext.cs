@@ -2,7 +2,7 @@
 
 namespace VirtualEvents
 {
-    class EventContext : DbContext
+    public class EventContext : DbContext
     {
         public DbSet<Event> Events { get; set; } = null!;
         public EventContext()
@@ -11,7 +11,7 @@ namespace VirtualEvents
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Database=Events;Username=postgres;Password=KekaNestea");
+          optionsBuilder.UseNpgsql("Host=localhost;Database=Events;Username=postgres;Password=KekaNestea");
         }
     }
 }

@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             create_btn = new Button();
-            change_btn = new Button();
             delete_btn = new Button();
             fontDialog1 = new FontDialog();
             title_Of_Event = new TextBox();
             mainPanel = new Panel();
+            dateTimePicker_MainForm = new DateTimePicker();
             participants_Of_Event = new TextBox();
             paticipanrs_lbl = new Label();
             description_Of_Event = new TextBox();
@@ -41,11 +41,13 @@
             category_lbl = new Label();
             category_Of_Event = new TextBox();
             dateTime_lbl = new Label();
-            maskedTextBox2 = new MaskedTextBox();
+            mainPanelVisible = new Panel();
             list_Of_Events = new ListBox();
             listEvents = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panel = new Panel();
+            change_btn = new Button();
+            comboBoxCategory = new ComboBox();
             mainPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             create_btn.BackColor = Color.FromArgb(224, 193, 69);
             create_btn.FlatStyle = FlatStyle.Popup;
             create_btn.ForeColor = SystemColors.ButtonHighlight;
-            create_btn.Location = new Point(68, 491);
+            create_btn.Location = new Point(430, 485);
             create_btn.Margin = new Padding(3, 4, 3, 4);
             create_btn.Name = "create_btn";
             create_btn.Size = new Size(92, 39);
@@ -64,33 +66,20 @@
             create_btn.UseVisualStyleBackColor = false;
             create_btn.Click += create_btn_Click;
             // 
-            // change_btn
-            // 
-            change_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            change_btn.BackColor = Color.FromArgb(0, 192, 192);
-            change_btn.FlatStyle = FlatStyle.Popup;
-            change_btn.ForeColor = SystemColors.ButtonHighlight;
-            change_btn.Location = new Point(564, 491);
-            change_btn.Margin = new Padding(3, 4, 3, 4);
-            change_btn.Name = "change_btn";
-            change_btn.Size = new Size(92, 39);
-            change_btn.TabIndex = 2;
-            change_btn.Text = "Изменить";
-            change_btn.UseVisualStyleBackColor = false;
-            // 
             // delete_btn
             // 
             delete_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             delete_btn.BackColor = Color.FromArgb(192, 0, 0);
             delete_btn.FlatStyle = FlatStyle.Popup;
             delete_btn.ForeColor = SystemColors.ButtonHighlight;
-            delete_btn.Location = new Point(679, 491);
+            delete_btn.Location = new Point(665, 485);
             delete_btn.Margin = new Padding(3, 4, 3, 4);
             delete_btn.Name = "delete_btn";
             delete_btn.Size = new Size(92, 39);
             delete_btn.TabIndex = 3;
             delete_btn.Text = "Удалить";
             delete_btn.UseVisualStyleBackColor = false;
+            delete_btn.Visible = false;
             delete_btn.Click += delete_btn_Click;
             // 
             // title_Of_Event
@@ -100,7 +89,8 @@
             title_Of_Event.BorderStyle = BorderStyle.None;
             title_Of_Event.Font = new Font("Palatino Linotype", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
             title_Of_Event.ForeColor = Color.FromArgb(224, 193, 69);
-            title_Of_Event.Location = new Point(267, 6);
+            title_Of_Event.ImeMode = ImeMode.NoControl;
+            title_Of_Event.Location = new Point(262, 6);
             title_Of_Event.Margin = new Padding(3, 4, 3, 4);
             title_Of_Event.Name = "title_Of_Event";
             title_Of_Event.ReadOnly = true;
@@ -112,6 +102,7 @@
             // 
             mainPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             mainPanel.BackColor = Color.FromArgb(217, 217, 217);
+            mainPanel.Controls.Add(dateTimePicker_MainForm);
             mainPanel.Controls.Add(participants_Of_Event);
             mainPanel.Controls.Add(paticipanrs_lbl);
             mainPanel.Controls.Add(description_Of_Event);
@@ -119,26 +110,34 @@
             mainPanel.Controls.Add(category_lbl);
             mainPanel.Controls.Add(category_Of_Event);
             mainPanel.Controls.Add(dateTime_lbl);
-            mainPanel.Controls.Add(maskedTextBox2);
-            mainPanel.Location = new Point(267, 58);
+            mainPanel.Location = new Point(266, 57);
             mainPanel.Margin = new Padding(3, 4, 3, 4);
             mainPanel.Name = "mainPanel";
-            mainPanel.Size = new Size(504, 420);
+            mainPanel.Size = new Size(490, 403);
             mainPanel.TabIndex = 5;
             mainPanel.Visible = false;
+            // 
+            // dateTimePicker_MainForm
+            // 
+            dateTimePicker_MainForm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker_MainForm.Location = new Point(161, 120);
+            dateTimePicker_MainForm.Name = "dateTimePicker_MainForm";
+            dateTimePicker_MainForm.RightToLeftLayout = true;
+            dateTimePicker_MainForm.Size = new Size(281, 27);
+            dateTimePicker_MainForm.TabIndex = 12;
             // 
             // participants_Of_Event
             // 
             participants_Of_Event.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             participants_Of_Event.BackColor = SystemColors.Control;
             participants_Of_Event.BorderStyle = BorderStyle.None;
-            participants_Of_Event.Location = new Point(164, 332);
+            participants_Of_Event.Location = new Point(164, 315);
             participants_Of_Event.Margin = new Padding(3, 4, 3, 4);
             participants_Of_Event.Multiline = true;
             participants_Of_Event.Name = "participants_Of_Event";
             participants_Of_Event.ReadOnly = true;
             participants_Of_Event.ScrollBars = ScrollBars.Vertical;
-            participants_Of_Event.Size = new Size(281, 28);
+            participants_Of_Event.Size = new Size(278, 28);
             participants_Of_Event.TabIndex = 11;
             // 
             // paticipanrs_lbl
@@ -146,7 +145,7 @@
             paticipanrs_lbl.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             paticipanrs_lbl.AutoSize = true;
             paticipanrs_lbl.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            paticipanrs_lbl.Location = new Point(18, 332);
+            paticipanrs_lbl.Location = new Point(18, 315);
             paticipanrs_lbl.Name = "paticipanrs_lbl";
             paticipanrs_lbl.Size = new Size(103, 20);
             paticipanrs_lbl.TabIndex = 10;
@@ -164,7 +163,7 @@
             description_Of_Event.ReadOnly = true;
             description_Of_Event.RightToLeft = RightToLeft.No;
             description_Of_Event.ScrollBars = ScrollBars.Vertical;
-            description_Of_Event.Size = new Size(281, 69);
+            description_Of_Event.Size = new Size(278, 111);
             description_Of_Event.TabIndex = 7;
             // 
             // description_lbl
@@ -198,7 +197,7 @@
             category_Of_Event.Name = "category_Of_Event";
             category_Of_Event.ReadOnly = true;
             category_Of_Event.ScrollBars = ScrollBars.Vertical;
-            category_Of_Event.Size = new Size(281, 20);
+            category_Of_Event.Size = new Size(278, 20);
             category_Of_Event.TabIndex = 4;
             // 
             // dateTime_lbl
@@ -211,18 +210,14 @@
             dateTime_lbl.TabIndex = 3;
             dateTime_lbl.Text = "Дата и время:";
             // 
-            // maskedTextBox2
+            // mainPanelVisible
             // 
-            maskedTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            maskedTextBox2.BorderStyle = BorderStyle.None;
-            maskedTextBox2.Location = new Point(164, 125);
-            maskedTextBox2.Margin = new Padding(3, 4, 3, 4);
-            maskedTextBox2.Mask = "00/00/0000 90:00";
-            maskedTextBox2.Name = "maskedTextBox2";
-            maskedTextBox2.ReadOnly = true;
-            maskedTextBox2.Size = new Size(281, 20);
-            maskedTextBox2.TabIndex = 2;
-            maskedTextBox2.ValidatingType = typeof(DateTime);
+            mainPanelVisible.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            mainPanelVisible.BackColor = Color.FromArgb(217, 217, 217);
+            mainPanelVisible.Location = new Point(267, 58);
+            mainPanelVisible.Name = "mainPanelVisible";
+            mainPanelVisible.Size = new Size(490, 402);
+            mainPanelVisible.TabIndex = 12;
             // 
             // list_Of_Events
             // 
@@ -230,9 +225,9 @@
             list_Of_Events.BackColor = Color.FromArgb(217, 217, 217);
             list_Of_Events.BorderStyle = BorderStyle.None;
             list_Of_Events.FormattingEnabled = true;
-            list_Of_Events.Location = new Point(-2, 58);
+            list_Of_Events.Location = new Point(0, 60);
             list_Of_Events.Name = "list_Of_Events";
-            list_Of_Events.Size = new Size(241, 420);
+            list_Of_Events.Size = new Size(240, 400);
             list_Of_Events.TabIndex = 6;
             list_Of_Events.SelectedIndexChanged += list_Of_Events_SelectedIndexChanged;
             // 
@@ -250,24 +245,53 @@
             // panel
             // 
             panel.BackColor = Color.FromArgb(217, 217, 217);
-            panel.Location = new Point(-2, -3);
+            panel.Location = new Point(0, 0);
             panel.Name = "panel";
-            panel.Size = new Size(241, 63);
+            panel.Size = new Size(240, 63);
             panel.TabIndex = 8;
+            // 
+            // change_btn
+            // 
+            change_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            change_btn.BackColor = Color.FromArgb(0, 192, 192);
+            change_btn.FlatStyle = FlatStyle.Popup;
+            change_btn.ForeColor = SystemColors.ButtonHighlight;
+            change_btn.Location = new Point(550, 485);
+            change_btn.Margin = new Padding(3, 4, 3, 4);
+            change_btn.Name = "change_btn";
+            change_btn.Size = new Size(92, 39);
+            change_btn.TabIndex = 2;
+            change_btn.Text = "Изменить";
+            change_btn.UseVisualStyleBackColor = false;
+            change_btn.Visible = false;
+            change_btn.Click += change_btn_Click;
+            // 
+            // comboBoxCategory
+            // 
+            comboBoxCategory.BackColor = Color.FromArgb(217, 217, 217);
+            comboBoxCategory.FormattingEnabled = true;
+            comboBoxCategory.Items.AddRange(new object[] { "По умолчанию", "По категории", "По дате" });
+            comboBoxCategory.Location = new Point(12, 432);
+            comboBoxCategory.Name = "comboBoxCategory";
+            comboBoxCategory.Size = new Size(127, 28);
+            comboBoxCategory.TabIndex = 13;
+            comboBoxCategory.SelectedIndexChanged += comboBoxCategory_SelectedIndexChanged;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(793, 559);
-            Controls.Add(listEvents);
-            Controls.Add(list_Of_Events);
+            ClientSize = new Size(782, 553);
+            Controls.Add(comboBoxCategory);
             Controls.Add(mainPanel);
             Controls.Add(delete_btn);
-            Controls.Add(title_Of_Event);
             Controls.Add(change_btn);
+            Controls.Add(listEvents);
+            Controls.Add(list_Of_Events);
+            Controls.Add(title_Of_Event);
             Controls.Add(create_btn);
             Controls.Add(panel);
+            Controls.Add(mainPanelVisible);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = " ";
@@ -280,12 +304,10 @@
         #endregion
 
         private System.Windows.Forms.Button create_btn;
-        private System.Windows.Forms.Button change_btn;
         private System.Windows.Forms.Button delete_btn;
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.TextBox title_Of_Event;
         private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label dateTime_lbl;
         private System.Windows.Forms.TextBox category_Of_Event;
         private System.Windows.Forms.Label category_lbl;
@@ -297,5 +319,9 @@
         private Label listEvents;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel panel;
+        private Button change_btn;
+        private Panel mainPanelVisible;
+        private DateTimePicker dateTimePicker_MainForm;
+        private ComboBox comboBoxCategory;
     }
 }
