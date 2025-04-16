@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Windows.Forms;
-
-namespace VirtualEvents
+﻿namespace VirtualEvents
 {
     public partial class MainForm : Form
     {
