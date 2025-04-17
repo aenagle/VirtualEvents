@@ -47,7 +47,7 @@
             if (Date < DateTime.Now)
                 throw new ArgumentException("Дата события не может быть раньше сегодняшней");
             if (!string.IsNullOrEmpty(Description) && !char.IsUpper(Description[0]))
-                throw new ArgumentException("Описание должен начинаться с заглавной буквы");
+                throw new ArgumentException("Описание должно начинаться с заглавной буквы");
             if (!string.IsNullOrEmpty(Category) && !char.IsUpper(Category[0]))
                 throw new ArgumentException("Категория должен начинаться с заглавной буквы");
             if (!string.IsNullOrEmpty(Participants))

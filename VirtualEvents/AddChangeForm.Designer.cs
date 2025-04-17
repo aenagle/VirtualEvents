@@ -59,6 +59,7 @@
             title.BorderStyle = BorderStyle.None;
             title.Location = new Point(170, 31);
             title.Margin = new Padding(3, 4, 3, 4);
+            title.MaxLength = 35;
             title.Name = "title";
             title.Size = new Size(355, 20);
             title.TabIndex = 1;
@@ -109,6 +110,7 @@
             description.BorderStyle = BorderStyle.None;
             description.Location = new Point(170, 208);
             description.Margin = new Padding(3, 4, 3, 4);
+            description.MaxLength = 300;
             description.Multiline = true;
             description.Name = "description";
             description.RightToLeft = RightToLeft.No;
@@ -131,6 +133,7 @@
             participants.BorderStyle = BorderStyle.None;
             participants.Location = new Point(170, 404);
             participants.Margin = new Padding(3, 4, 3, 4);
+            participants.MaxLength = 50;
             participants.Multiline = true;
             participants.Name = "participants";
             participants.RightToLeft = RightToLeft.No;
