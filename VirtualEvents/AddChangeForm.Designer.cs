@@ -5,7 +5,7 @@
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -63,6 +63,7 @@
             title.Name = "title";
             title.Size = new Size(355, 20);
             title.TabIndex = 1;
+            title.TextChanged += title_TextChanged;
             title.Validating += title_Validating;
             // 
             // category_lbl
@@ -110,7 +111,6 @@
             description.BorderStyle = BorderStyle.None;
             description.Location = new Point(170, 208);
             description.Margin = new Padding(3, 4, 3, 4);
-            description.MaxLength = 300;
             description.Multiline = true;
             description.Name = "description";
             description.RightToLeft = RightToLeft.No;
@@ -133,7 +133,7 @@
             participants.BorderStyle = BorderStyle.None;
             participants.Location = new Point(170, 404);
             participants.Margin = new Padding(3, 4, 3, 4);
-            participants.MaxLength = 50;
+            participants.MaxLength = 300;
             participants.Multiline = true;
             participants.Name = "participants";
             participants.RightToLeft = RightToLeft.No;
@@ -218,25 +218,26 @@
             Controls.Add(title_lbl);
             Margin = new Padding(3, 4, 3, 4);
             Name = "AddChangeForm";
+            Text = "Event Creation";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.Label title_lbl;
-        private System.Windows.Forms.TextBox title;
-        private System.Windows.Forms.Label category_lbl;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox description;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox participants;
-        private System.Windows.Forms.Button save_button;
-        private System.Windows.Forms.Button cancel_btn;
-        private DateTimePicker datePicker;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBoxCategory_AddForm;
-        private DateTimePicker timePicker;
+        public System.Windows.Forms.Label title_lbl;
+        public System.Windows.Forms.TextBox title;
+        public System.Windows.Forms.Label category_lbl;
+        public System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Label label4;
+        public System.Windows.Forms.Label label5;
+        public System.Windows.Forms.TextBox description;
+        public System.Windows.Forms.Label label6;
+        public System.Windows.Forms.TextBox participants;
+        public System.Windows.Forms.Button save_button;
+        public System.Windows.Forms.Button cancel_btn;
+        public DateTimePicker datePicker;
+        public DateTimePicker dateTimePicker1;
+        public ComboBox comboBoxCategory_AddForm;
+        public DateTimePicker timePicker;
     }
 }

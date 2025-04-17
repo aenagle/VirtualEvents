@@ -2,18 +2,27 @@
 {
     public partial class AddChangeForm : Form
     {
-        private Event _event; // хранит событие для редактирования
+        /// <summary>
+        /// Переменнная, которая хранит событие для редактирования
+        /// </summary>
+        public Event _event;
         public AddChangeForm()
         {
             InitializeComponent();
             datePicker.MinDate = DateTime.Today;
         }
-        // конструктор для редактирования существующего события
-        public AddChangeForm(Event existingEvent) : this() //  основной конструктор
+        /// <summary>
+        /// Конструктор для редактирования существующего события
+        /// </summary>
+        /// <param name="existingEvent"></param>
+        public AddChangeForm(Event existingEvent) : this()
         {
             _event = existingEvent;
             LoadEventData();
         }
+        /// <summary>
+        /// Метод, загружающий данные из события для редактирования в элементы управления формы
+        /// </summary>
         public void LoadEventData()
         {
             title.Text = _event.Title;
@@ -22,7 +31,11 @@
             comboBoxCategory_AddForm.Text = _event.Category;
             participants.Text = _event.Participants;
         }
-
+        /// <summary>
+        /// Событие при нажатии кнопки Сохранить
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void save_button_Click(object sender, EventArgs e)
         {
             if (_event != null) //  редактирование
@@ -36,13 +49,13 @@
 
                 using (var db = new EventContext())
                 {
-                    db.Events.Update(_event); 
+                    db.Events.Update(_event);
                     db.SaveChanges();
                     MessageBox.Show("Событие обновлено!", "Уведомление");
                     Close();
                 }
             }
-            else 
+            else
             {
                 var newEvent = new Event
                 {
@@ -62,18 +75,45 @@
                 }
             }
         }
+        /// <summary>
+        /// Событие при нажатии кнопки Отменить
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void cancel_btn_Click(object sender, EventArgs e) => Close();
-
+        /// <summary>
+        /// Проверка поля ввода Заголовка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void title_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(title.Text))
             {
                 title.BackColor = Color.LightCoral;
-                e.Cancel = true; // отмена события
+                e.Cancel = true;
             }
             else
             {
                 title.BackColor = Color.White;
+            }
+        }
+
+        private void title_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(title.Text))
+            {
+                string text = title.Text;
+                string firstChar = text.Substring(0, 1).ToUpper();
+                string rest = text.Length > 1 ? text.Substring(1) : "";
+                string newText = firstChar + rest;
+
+                if (title.Text != newText)
+                {
+                    int selectionStart = title.SelectionStart;
+                    title.Text = newText;
+                    title.SelectionStart = selectionStart;
+                }
             }
         }
     }

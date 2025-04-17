@@ -1,11 +1,11 @@
 ﻿namespace VirtualEvents
 {
-    partial class MainForm
+    public partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        public System.ComponentModel.IContainer components = null;
 
         /// <summary>
         ///  Clean up any resources being used.
@@ -31,7 +31,6 @@
             create_btn = new Button();
             delete_btn = new Button();
             fontDialog1 = new FontDialog();
-            title_Of_Event = new TextBox();
             mainPanel = new Panel();
             dateTimePicker_MainForm = new DateTimePicker();
             participants_Of_Event = new TextBox();
@@ -48,6 +47,8 @@
             panel = new Panel();
             change_btn = new Button();
             comboBoxCategory = new ComboBox();
+            title_Of_Event = new Label();
+            generate_Report = new Button();
             mainPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -57,7 +58,7 @@
             create_btn.BackColor = Color.FromArgb(224, 193, 69);
             create_btn.FlatStyle = FlatStyle.Popup;
             create_btn.ForeColor = SystemColors.ButtonHighlight;
-            create_btn.Location = new Point(430, 485);
+            create_btn.Location = new Point(442, 485);
             create_btn.Margin = new Padding(3, 4, 3, 4);
             create_btn.Name = "create_btn";
             create_btn.Size = new Size(92, 39);
@@ -81,22 +82,6 @@
             delete_btn.UseVisualStyleBackColor = false;
             delete_btn.Visible = false;
             delete_btn.Click += delete_btn_Click;
-            // 
-            // title_Of_Event
-            // 
-            title_Of_Event.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            title_Of_Event.BackColor = SystemColors.Control;
-            title_Of_Event.BorderStyle = BorderStyle.None;
-            title_Of_Event.Font = new Font("Palatino Linotype", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            title_Of_Event.ForeColor = Color.FromArgb(224, 193, 69);
-            title_Of_Event.ImeMode = ImeMode.NoControl;
-            title_Of_Event.Location = new Point(262, 6);
-            title_Of_Event.Margin = new Padding(3, 4, 3, 4);
-            title_Of_Event.Name = "title_Of_Event";
-            title_Of_Event.ReadOnly = true;
-            title_Of_Event.Size = new Size(504, 37);
-            title_Of_Event.TabIndex = 4;
-            title_Of_Event.TextAlign = HorizontalAlignment.Center;
             // 
             // mainPanel
             // 
@@ -256,7 +241,7 @@
             change_btn.BackColor = Color.FromArgb(0, 192, 192);
             change_btn.FlatStyle = FlatStyle.Popup;
             change_btn.ForeColor = SystemColors.ButtonHighlight;
-            change_btn.Location = new Point(550, 485);
+            change_btn.Location = new Point(554, 485);
             change_btn.Margin = new Padding(3, 4, 3, 4);
             change_btn.Name = "change_btn";
             change_btn.Size = new Size(92, 39);
@@ -281,24 +266,45 @@
             comboBoxCategory.Text = "Сортировать";
             comboBoxCategory.SelectedIndexChanged += comboBoxCategory_SelectedIndexChanged;
             // 
+            // title_Of_Event
+            // 
+            title_Of_Event.Font = new Font("Bookman Old Style", 16.2F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            title_Of_Event.ForeColor = Color.FromArgb(224, 193, 69);
+            title_Of_Event.Location = new Point(266, 9);
+            title_Of_Event.Name = "title_Of_Event";
+            title_Of_Event.Size = new Size(491, 37);
+            title_Of_Event.TabIndex = 14;
+            title_Of_Event.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // generate_Report
+            // 
+            generate_Report.Location = new Point(12, 485);
+            generate_Report.Name = "generate_Report";
+            generate_Report.Size = new Size(94, 39);
+            generate_Report.TabIndex = 15;
+            generate_Report.Text = "Отчёт";
+            generate_Report.UseVisualStyleBackColor = true;
+            generate_Report.Click += generate_Report_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 553);
+            Controls.Add(generate_Report);
+            Controls.Add(title_Of_Event);
             Controls.Add(comboBoxCategory);
             Controls.Add(mainPanel);
             Controls.Add(delete_btn);
             Controls.Add(change_btn);
             Controls.Add(listEvents);
             Controls.Add(list_Of_Events);
-            Controls.Add(title_Of_Event);
             Controls.Add(create_btn);
             Controls.Add(panel);
             Controls.Add(mainPanelVisible);
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
-            Text = " ";
+            Text = " Events";
             mainPanel.ResumeLayout(false);
             mainPanel.PerformLayout();
             ResumeLayout(false);
@@ -307,25 +313,26 @@
 
         #endregion
 
-        private System.Windows.Forms.Button create_btn;
-        private System.Windows.Forms.Button delete_btn;
-        private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.TextBox title_Of_Event;
-        private System.Windows.Forms.Panel mainPanel;
-        private System.Windows.Forms.Label dateTime_lbl;
-        private System.Windows.Forms.TextBox category_Of_Event;
-        private System.Windows.Forms.Label category_lbl;
-        private System.Windows.Forms.TextBox description_Of_Event;
-        private System.Windows.Forms.Label description_lbl;
-        private System.Windows.Forms.TextBox participants_Of_Event;
-        private System.Windows.Forms.Label paticipanrs_lbl;
-        private ListBox list_Of_Events;
-        private Label listEvents;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private Panel panel;
-        private Button change_btn;
-        private Panel mainPanelVisible;
-        private DateTimePicker dateTimePicker_MainForm;
-        private ComboBox comboBoxCategory;
+        public System.Windows.Forms.Button create_btn;
+        public System.Windows.Forms.Button delete_btn;
+        public System.Windows.Forms.FontDialog fontDialog1;
+        public System.Windows.Forms.Panel mainPanel;
+        public System.Windows.Forms.Label dateTime_lbl;
+        public System.Windows.Forms.TextBox category_Of_Event;
+        public System.Windows.Forms.Label category_lbl;
+        public System.Windows.Forms.TextBox description_Of_Event;
+        public System.Windows.Forms.Label description_lbl;
+        public System.Windows.Forms.TextBox participants_Of_Event;
+        public System.Windows.Forms.Label paticipanrs_lbl;
+        public ListBox list_Of_Events;
+        public Label listEvents;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public Panel panel;
+        public Button change_btn;
+        public Panel mainPanelVisible;
+        public DateTimePicker dateTimePicker_MainForm;
+        public ComboBox comboBoxCategory;
+        private Label title_Of_Event;
+        private Button generate_Report;
     }
 }

@@ -34,6 +34,11 @@
         /// </summary>
         public string Participants { get; set; }
 
+        /// <summary>
+        /// Свойство для отображения
+        /// </summary>
+        public string DisplayInfo => $"{Title}-{Category}";
+
         public void Validate()
         {
             if (string.IsNullOrEmpty(Title))

@@ -1,3 +1,5 @@
+using OfficeOpenXml;
+
 namespace VirtualEvents
 {
     internal static class Program

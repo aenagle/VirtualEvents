@@ -1,15 +1,15 @@
-﻿namespace VirtualEvents
+﻿using OfficeOpenXml;
+namespace VirtualEvents
 {
     public partial class MainForm : Form
     {
-        private EventContext db;
-        private Event? selectedEvent;
+        public EventContext db;
+        public Event? selectedEvent;
         public MainForm()
         {
             InitializeComponent();
             db = new EventContext();
             LoadEvents();
-            //dateTimePicker_MainForm.ForeColor = SystemColors.Control;
         }
         /// <summary>
         /// Метод для выгрузки событий в ListBox
@@ -17,7 +17,7 @@
         public void LoadEvents()
         {
             list_Of_Events.DataSource = db.Events.ToList();
-            list_Of_Events.DisplayMember = "Title";
+            list_Of_Events.DisplayMember = "DisplayInfo";
         }
         /// <summary>
         /// Событие при нажатии кнопки Создать
@@ -30,20 +30,18 @@
             form2.ShowDialog();
             LoadEvents();
         }
-        private void list_Of_Events_SelectedIndexChanged(object sender, EventArgs e)
+        public void list_Of_Events_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedEvent = (Event?)list_Of_Events.SelectedItem;
-            if (list_Of_Events.SelectedItem != null)
-            {
-                title_Of_Event.Text = selectedEvent.Title;
-                description_Of_Event.Text = selectedEvent.Description;
-                dateTimePicker_MainForm.Value = selectedEvent.Date;
-                category_Of_Event.Text = selectedEvent.Category;
-                participants_Of_Event.Text = selectedEvent.Participants;
-                mainPanel.Visible = true;
-                change_btn.Visible = true;
-                delete_btn.Visible = true;
-            }
+
+            title_Of_Event.Text = selectedEvent.Title;
+            description_Of_Event.Text = selectedEvent.Description;
+            dateTimePicker_MainForm.Value = selectedEvent.Date;
+            category_Of_Event.Text = selectedEvent.Category;
+            participants_Of_Event.Text = selectedEvent.Participants;
+            mainPanel.Visible = true;
+            change_btn.Visible = true;
+            delete_btn.Visible = true;
         }
         /// <summary>
         /// Событие при нажатии кнопки Удалить
@@ -59,25 +57,20 @@
                 var selectedEvent = (Event)list_Of_Events.SelectedItem;
 
                 var eventToDelete = db.Events.Find(selectedEvent.EventID);
-                if (eventToDelete != null)
-                {
-                    db.Events.Remove(eventToDelete);
-                    db.SaveChanges();
-                    LoadEvents();
 
-                    title_Of_Event.Clear();
-                    description_Of_Event.Clear();
-                    category_Of_Event.Clear();
-                    participants_Of_Event.Clear();
-                    mainPanel.Visible = false;
-                    delete_btn.Visible = false;
-                    change_btn.Visible = false;
-                    MessageBox.Show("Событие удалено.", "Уведомление");
-                }
-                else
-                {
-                    MessageBox.Show("Событие не найдено.");
-                }
+                db.Events.Remove(eventToDelete);
+                db.SaveChanges();
+                LoadEvents();
+
+                title_Of_Event.Text = string.Empty;
+                description_Of_Event.Clear();
+                category_Of_Event.Clear();
+                participants_Of_Event.Clear();
+                mainPanel.Visible = false;
+                delete_btn.Visible = false;
+                change_btn.Visible = false;
+
+                MessageBox.Show("Событие удалено.", "Уведомление");
             }
             else
             {
@@ -107,7 +100,7 @@
             }
         }
 
-        private void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
+        public void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBoxCategory.SelectedIndex)
             {
