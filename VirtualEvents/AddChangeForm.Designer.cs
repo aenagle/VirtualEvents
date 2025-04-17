@@ -175,6 +175,7 @@
             // 
             // comboBoxCategory_AddForm
             // 
+            comboBoxCategory_AddForm.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxCategory_AddForm.FormattingEnabled = true;
             comboBoxCategory_AddForm.Items.AddRange(new object[] { "День рождения", "Косплей-вечеринка", "Маскарад", "Вечеринка для детей", "Выпускной" });
             comboBoxCategory_AddForm.Location = new Point(169, 69);

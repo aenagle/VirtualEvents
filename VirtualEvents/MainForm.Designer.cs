@@ -268,13 +268,17 @@
             // 
             // comboBoxCategory
             // 
+            comboBoxCategory.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             comboBoxCategory.BackColor = Color.FromArgb(217, 217, 217);
+            comboBoxCategory.CausesValidation = false;
             comboBoxCategory.FormattingEnabled = true;
+            comboBoxCategory.ImeMode = ImeMode.On;
             comboBoxCategory.Items.AddRange(new object[] { "По умолчанию", "По категории", "По дате" });
-            comboBoxCategory.Location = new Point(12, 432);
+            comboBoxCategory.Location = new Point(0, 441);
             comboBoxCategory.Name = "comboBoxCategory";
-            comboBoxCategory.Size = new Size(127, 28);
+            comboBoxCategory.Size = new Size(240, 28);
             comboBoxCategory.TabIndex = 13;
+            comboBoxCategory.Text = "Сортировать";
             comboBoxCategory.SelectedIndexChanged += comboBoxCategory_SelectedIndexChanged;
             // 
             // MainForm

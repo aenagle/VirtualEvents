@@ -19,6 +19,11 @@
             list_Of_Events.DataSource = db.Events.ToList();
             list_Of_Events.DisplayMember = "Title";
         }
+        /// <summary>
+        /// Событие при нажатии кнопки Создать
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void create_btn_Click(object sender, EventArgs e)
         {
             var form2 = new AddChangeForm();
