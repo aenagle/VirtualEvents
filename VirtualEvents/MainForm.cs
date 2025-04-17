@@ -30,6 +30,11 @@ namespace VirtualEvents
             form2.ShowDialog();
             LoadEvents();
         }
+        /// <summary>
+        /// Событие при выборе элемента в ListBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void list_Of_Events_SelectedIndexChanged(object sender, EventArgs e)
         {
             selectedEvent = (Event?)list_Of_Events.SelectedItem;
@@ -99,7 +104,11 @@ namespace VirtualEvents
                 MessageBox.Show("Необходимо выбрать событие для редактирования.");
             }
         }
-
+        /// <summary>
+        /// Событие при выбранном элементе в ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void comboBoxCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBoxCategory.SelectedIndex)
