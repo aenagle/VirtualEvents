@@ -284,7 +284,6 @@
             generate_Report.TabIndex = 15;
             generate_Report.Text = "Отчёт";
             generate_Report.UseVisualStyleBackColor = true;
-            generate_Report.Click += generate_Report_Click;
             // 
             // MainForm
             // 
