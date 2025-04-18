@@ -54,7 +54,7 @@
             // 
             // create_btn
             // 
-            create_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            create_btn.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             create_btn.BackColor = Color.FromArgb(224, 193, 69);
             create_btn.FlatStyle = FlatStyle.Popup;
             create_btn.ForeColor = SystemColors.ButtonHighlight;
@@ -278,6 +278,7 @@
             // 
             // generate_Report
             // 
+            generate_Report.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             generate_Report.Location = new Point(12, 485);
             generate_Report.Name = "generate_Report";
             generate_Report.Size = new Size(94, 39);
